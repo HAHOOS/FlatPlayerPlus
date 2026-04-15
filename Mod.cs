@@ -20,14 +20,12 @@ using Avatar = Il2CppSLZ.VRMK.Avatar;
 using Object = UnityEngine.Object;
 using Page = BoneLib.BoneMenu.Page;
 
-[assembly: MelonInfo(typeof(FlatPlayerPlus.Mod), "FlatPlayerPlus", "2.1.0", "HL2H0", "https://thunderstore.io/c/bonelab/p/HL2H0/FlatPlayerPlus/")]
-[assembly: MelonGame("Stress Level Zero", "BONELAB")]
-[assembly: MelonOptionalDependencies("RagdollPlayer")]
-
 namespace FlatPlayerPlus
 {
     public class Mod : MelonMod
     {
+        public const string Version = "2.1.0";
+
         public static Page MainPage { get; private set; }
         public static Page GraphicsPage { get; private set; }
         public static Page TogglesPage { get; private set; }
