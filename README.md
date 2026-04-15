@@ -98,5 +98,5 @@ If you encounter any issues or want to submit feedback, feel free to visit the m
 
 
 
-## [1.0.0]  Regular Update
+## [1.0.0] Regular Update
 * Initial Release
