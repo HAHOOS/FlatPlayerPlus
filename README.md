@@ -33,12 +33,12 @@
 
 > Controllers (DualShock, Xbox, etc.) aren't supported ***yet***
 
-| Key       | Action                     | Note                                                                                                                     |  
-|-----------|----------------------------|--------------------------------------------------------------------------------------------------------------------------|  
-| R         | Reload                     | To reload, first eject the magazine, then grab a magazine from the belt, and click `R`                                   |  
-| W         | Drive Forward              | While holding `W` the character leans forward, to avoid that, hold `S`                                                   |  
-| LeftShift | Drive Backwards            | Why LeftShift? Because `S` is used to avoid the lean that happens when holding `W`                                       |  
-| LeftCtrl  | Ragdoll                    | You must have [RagdollPlayer](https://thunderstore.io/c/bonelab/p/Lakatrazz/Ragdoll_Player/) installed for this to work. |  
+| Key       | Action          | Note                                                                                                                     |
+| --------- | --------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| R         | Reload          | To reload, first eject the magazine, then grab a magazine from the belt, and click `R`                                   |
+| W         | Drive Forward   | While holding `W` the character leans forward, to avoid that, hold `S`                                                   |
+| LeftShift | Drive Backwards | Why LeftShift? Because `S` is used to avoid the lean that happens when holding `W`                                       |
+| LeftCtrl  | Ragdoll         | You must have [RagdollPlayer](https://thunderstore.io/c/bonelab/p/Lakatrazz/Ragdoll_Player/) installed for this to work. |  
 
 ### Binding customization
 
@@ -67,11 +67,11 @@ If you encounter any issues or want to submit feedback, feel free to visit the m
 * LlamasHere - [FlatPlayer](https://thunderstore.io/c/bonelab/p/LlamasHere/FlatPlayer/)
 * Aiden - [BONELAB Icon Template](https://www.figma.com/community/file/1218386424917309834)
 * TrevTV - [MelonLoader Mod Template](https://github.com/TrevTV/MelonLoader.VSWizard)
-* HAHOOS - Worked on v2.0.1
+* HAHOOS - Worked on v2.1.0
 
 # ChangeLog
 
-## [2.0.1] Minor Adjustments
+## [2.1.0] Minor Update
 
 ### Fixed
 
