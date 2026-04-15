@@ -76,7 +76,12 @@ namespace FlatPlayerPlus
         }
 
         private static Hand GetHand(bool inverse = false)
-            => (ReloadHand == HandLocation.Right && !inverse) ? Player.RightHand : Player.LeftHand;
+        {
+            if (inverse)
+                return ReloadHand == HandLocation.Right ? Player.LeftHand : Player.RightHand;
+            else
+                return ReloadHand == HandLocation.Right ? Player.RightHand : Player.LeftHand;
+        }
 
         private static void SetupBoneMenu()
         {
