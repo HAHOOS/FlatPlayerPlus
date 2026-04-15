@@ -15,6 +15,9 @@
 		<Reference Include="FlatPlayer">
 			<HintPath>$(BONELAB_DIR)\Mods\FlatPlayer.dll</HintPath>
 		</Reference>
+		<Reference Include="RagdollPlayer">
+			<HintPath>$(BONELAB_DIR)\Mods\RagdollPlayer.dll</HintPath>
+		</Reference>
 		<Reference Include="FieldInjector">
 			<HintPath>$(BONELAB_DIR)\Mods\FieldInjector.dll</HintPath>
 		</Reference>

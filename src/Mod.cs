@@ -1,18 +1,19 @@
 ﻿using System.Reflection;
 
-using MelonLoader;
-
 using BoneLib;
 using BoneLib.BoneMenu;
-
-using UnityEngine;
-
-using Il2CppSLZ.Marrow;
-using Il2CppSLZ.Bonelab.SaveData;
 
 using FlatPlayer;
 
 using FlatPlayerPlus.MonoBehaviours;
+
+using Il2CppSLZ.Bonelab;
+using Il2CppSLZ.Bonelab.SaveData;
+using Il2CppSLZ.Marrow;
+
+using MelonLoader;
+
+using UnityEngine;
 
 using AmmoInventory = Il2CppSLZ.Marrow.AmmoInventory;
 using Avatar = Il2CppSLZ.VRMK.Avatar;
@@ -21,6 +22,7 @@ using Page = BoneLib.BoneMenu.Page;
 
 [assembly: MelonInfo(typeof(FlatPlayerPlus.Mod), "FlatPlayerPlus", "2.0.1", "HL2H0", "https://thunderstore.io/c/bonelab/p/HL2H0/FlatPlayerPlus/")]
 [assembly: MelonGame("Stress Level Zero", "BONELAB")]
+[assembly: MelonOptionalDependencies("RagdollPlayer")]
 
 namespace FlatPlayerPlus
 {
@@ -52,6 +54,8 @@ namespace FlatPlayerPlus
 
         private static GameObject UI { get; set; }
         public static FPP_UI_Handler UIHandler { get; set; }
+
+        public static bool HasRagdollPlayer => FindMelon("Ragdoll Player", "Lakatrazz") != null;
 
         public enum HandLocation
         {
@@ -197,7 +201,26 @@ namespace FlatPlayerPlus
 
             //Ragdoll
             if (Input.GetKeyDown(ModPreferences.RagdollKey.Value))
-                Player.LeftController._thumbstickDown = true;
+            {
+                // This could be done without RagdollPlayer honestly
+                if (HasRagdollPlayer)
+                    Ragdoll();
+                else
+                    LoggerInstance.Warning("RagdollPlayer not found! It is required for the ragdoll functionality to work");
+            }
+        }
+
+        private static void Ragdoll()
+        {
+            RigManager rigManager = Player.RigManager;
+            if (!rigManager?.activeSeat && !UIRig.Instance.popUpMenu.m_IsCursorShown)
+            {
+                PhysicsRig physicsRig = Player.PhysicsRig;
+                if (!physicsRig.torso.shutdown && physicsRig.ballLocoEnabled)
+                    RagdollPlayer.RagdollPlayerMod.RagdollRig(rigManager);
+                else
+                    RagdollPlayer.RagdollPlayerMod.UnragdollRig(rigManager);
+            }
         }
 
         public override void OnLateUpdate()
