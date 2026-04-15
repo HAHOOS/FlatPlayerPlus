@@ -93,13 +93,20 @@ namespace FlatPlayerPlus
 
             MainPage = Page.Root.CreatePage("FlatPlayerPlus", Color.green);
             TogglesPage = MainPage.CreatePage("Toggles", Color.yellow);
-            ToggleRightGripElement = TogglesPage.CreateBool("Toggle Right Grip", Color.white, false, _ => ModPreferences.SavePreferences());
-            ToggleLeftGripElement = TogglesPage.CreateBool("Toggle Left Grip", Color.white, false, null);
+            ToggleRightGripElement = TogglesPage.CreateBool("Toggle Right Grip", Color.white, false, (_) => ModPreferences.SavePreferences());
+            ToggleLeftGripElement = TogglesPage.CreateBool("Toggle Left Grip", Color.white, false, (_) => ModPreferences.SavePreferences());
 
             UIPage = MainPage.CreatePage("UI", Color.magenta);
-            HealthBarPositionElement = UIPage.CreateEnum("Health Bar Position", Color.white, FPP_UI_Handler.HealthBarUIPosition,
-                v => UIHandler.UpdateUIPosition((FPP_UI_Handler.UIPosition)v, (FPP_UI_Handler.UIPosition)AmmoPositionElement.Value));
-            AmmoPositionElement = UIPage.CreateEnum("Ammo Position", Color.white, FPP_UI_Handler.AmmoUIPosition, v => UIHandler.UpdateUIPosition((FPP_UI_Handler.UIPosition)HealthBarPositionElement.Value, (FPP_UI_Handler.UIPosition)v));
+            HealthBarPositionElement = UIPage.CreateEnum("Health Bar Position", Color.white, FPP_UI_Handler.HealthBarUIPosition, v =>
+            {
+                UIHandler.UpdateUIPosition((FPP_UI_Handler.UIPosition)v, (FPP_UI_Handler.UIPosition)AmmoPositionElement.Value);
+                ModPreferences.SavePreferences();
+            });
+            AmmoPositionElement = UIPage.CreateEnum("Ammo Position", Color.white, FPP_UI_Handler.AmmoUIPosition, v =>
+            {
+                UIHandler.UpdateUIPosition((FPP_UI_Handler.UIPosition)HealthBarPositionElement.Value, (FPP_UI_Handler.UIPosition)v);
+                ModPreferences.SavePreferences();
+            });
 
             FlatPlayerPage = MainPage.CreatePage("FlatPlayer Settings", Color.yellow);
             HandsExtendSensitivity = FlatPlayerPage.CreateFloat("Hand Extend Sensitivity", Color.white, 0.1f, 0.1f, 0, int.MaxValue, _ =>
